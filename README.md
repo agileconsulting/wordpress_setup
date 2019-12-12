@@ -29,5 +29,4 @@ sudo ./sp-lamp.sh
 ```
 
 
-
  

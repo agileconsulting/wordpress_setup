@@ -13,13 +13,20 @@ git clone https://github.com/agileconsulting/wordpress_setup/
 ```
 
 Make shell executable 	
+```
 	chmod +x sp-lamp.sh
- 
- Edit password file
+``` 
+
+ Edit password and configuration file
+ ```
  	vim passd.sh
+```
 
+Install all 
+
+```
 sudo ./sp-lamp.sh
-
+```
 
 
 

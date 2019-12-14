@@ -43,7 +43,7 @@ chmod +x wp-go.sh
 Install all 
 
 ```
-sudo ./sp-lamp.sh
+sudo ./wp-go.sh
 ```
 
 

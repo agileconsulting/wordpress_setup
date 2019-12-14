@@ -35,6 +35,11 @@ Edit password and configuration file
 vi passwd.sh
 ```
 
+Make shell executable 	
+```
+chmod +x wp-go.sh
+```
+
 Install all 
 
 ```

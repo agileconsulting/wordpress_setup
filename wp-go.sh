@@ -11,13 +11,13 @@
 #########################################################
 
 source ./passwd.sh
-directoryName="/var/www/$domainName"
+directoryName="/var/www/$domainname"
 
 
 #Configure apache
 sudo mkdir $directoryName
 sudo echo "<VirtualHost *:80>
-	ServerName $domainName
+	ServerName $domainname
 	DocumentRoot \"$directoryName/\"
 	<Directory \"$directoryName\">
 		Options FollowSymLinks
@@ -25,24 +25,23 @@ sudo echo "<VirtualHost *:80>
 		Order allow,deny
 		Allow from all
 	</Directory>
-</VirtualHost>" > /etc/apache2/sites-available/$domainName.conf
+</VirtualHost>" > /etc/apache2/sites-available/$domainname.conf
 
-sudo a2ensite $domainName 
-sudo chmod -R $directoryName 
+sudo a2ensite $domainname 
 sudo chown -R www-data:www-data $directoryName 
 
 
 
 
 # Create database and database user for WordPress
-mysql -u root -p$MYSQL_ROOT_PASSWORD <<EOF
+mysql -u root -p$ROOT_PASS<<EOF
 CREATE DATABASE  $dbname;
 CREATE USER '$dbusername'@'localhost' IDENTIFIED BY '$dbpassword';
 GRANT ALL PRIVILEGES ON *.* TO '$dbusername'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 
-cd $directoryNamE
+cd $directoryName
 
 sudo wp core download --allow-root 
 sudo wp core config --dbname=$dbname --dbuser=$dbusername --dbpass=$dbpassword --allow-root 

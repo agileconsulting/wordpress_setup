@@ -79,6 +79,7 @@ fi
 
 		# Install PHP modules
 		sudo apt-get -y install php-mcrypt php-zip php-mbstring 
+		sudo apt-get -y install php7.3-cli
 
 		sudo apt-get -y  install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip
 		# Enabling modules

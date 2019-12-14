@@ -18,6 +18,13 @@ Clone
 git clone https://github.com/agileconsulting/wordpress_setup/
 ```
 
+Goto to dir
+
+```
+cd wordpress_setup/
+```
+
+
 Make shell executable 	
 ```
 	chmod +x sp-lamp.sh

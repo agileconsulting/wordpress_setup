@@ -1,6 +1,12 @@
 # wordpress_setup
 shell script to setup a wp site
 
+Start by updating the package index:
+
+```
+sudo apt update
+```
+
 Install git
 
 ```

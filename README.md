@@ -34,6 +34,12 @@ Edit password and configuration file
  ```
 vi passwd.sh
 ```
+Install lamp 
+
+```
+sudo ./sp-lamp.sh
+```
+
 
 Make shell executable 	
 ```

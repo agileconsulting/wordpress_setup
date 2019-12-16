@@ -28,12 +28,7 @@ sudo echo "<VirtualHost *:80>
 </VirtualHost>" > /etc/apache2/sites-available/$domainname.conf
 
 sudo a2ensite $domainname 
-sudo chown -R www-data:www-data $directoryName 
 
-
-
-
-# Create database and database user for WordPress
 # Create database and database user for WordPress
 mysql -u root -p$MYSQL_ROOT_PASSWORD<<EOF
 CREATE USER '$WP_DB_USERNAME'@'localhost' IDENTIFIED BY '$WP_DB_PASSWORD';
@@ -49,3 +44,4 @@ sudo wp core download --allow-root
 sudo wp config create --dbname=$WP_DB_NAME --dbuser=$WP_DB_USERNAME --dbpass=$WP_DB_PASSWORD --allow-root 
 sudo wp core install --allow-root --url="$domainname" --title="$sitetitle" --admin_user="$siteuser" --admin_password="$sitepassword" --admin_email="$siteemail"   --skip-email
 
+sudo chown -R www-data:www-data $directoryName 

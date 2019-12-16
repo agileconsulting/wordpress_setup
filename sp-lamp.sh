@@ -3,7 +3,7 @@
 #########################################################
 #							#
 #	Package Name: Lamp				#
-#	Author:Marco Baraldiam                  	#
+#	Author:Marco elvenexian                 	#
 #	Description: LampPack allows you to		#
 #	automate the installation of LAMP stack		#
 # 	and many other utilities on Ubuntu 		#
@@ -32,13 +32,17 @@ if ! hash sudo 2>/dev/null; then
 	exit
 fi
 
-
+		#Read all password
                 source ./passwd.sh
+		
+		#Add to instal phpadmin
+		sudo add-apt-repository ppa:phpmyadmin/ppa
 
 		# Run an update and upgrade for packages
 		echo "Checking for available software updates"
 		echo ''
 		sudo apt-get update -y 
+		
 		echo "Applying critical updates"
 		echo ''
 		sudo apt-get upgrade -y  
@@ -69,32 +73,40 @@ fi
 		echo ''
 		sudo apt-get -y install sendmail  
 
-		# Install Apache
-#		sudo apt-get -y install apache2
-
-# Install AMP 
+		# Install AMP 
 		echo "Installing LAMP server "
 		echo ''
+
+
+                # sudo apt-get -y install apache2 apache2-utils 
+                # sudo systemctl enable apache2
+                # sudo systemctl start apache2
+
+		#setup  mysql password
+                echo "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections
+                echo "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections		
+		
+		# Install AMP
 		sudo apt-get -y install lamp-server^   
+		#sudo apt-get -y install mysql-server
+
+
 
 		# Install PHP modules
+		sudo apt-get -y install php libapache2-mod-php php-mysql
 		sudo apt-get -y install php-mcrypt php-zip php-mbstring 
-		sudo apt-get -y install php7.3-cli
-
-		sudo apt-get -y  install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip
+		sudo apt-get -y install php-cli php-gettext PHP-FPM
+		sudo apt-get -y install php-curl php-gd php-xml php-xmlrpc php-soap php-intl
+		
+		# Install phpmyadmin
+		sudo apt-get -y install phpmyadmin
+ 
 		# Enabling modules
 		echo "Enabling Apache modules"
 		echo ''
 		sudo a2enmod rewrite  
    
-		#Install mysql
-                echo "mysql-server-5.7 mysql-server/root_password password $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections
-                echo "mysql-server-5.7 mysql-server/root_password_again password $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections
-
-
-
-
-
+	
 		# Install WP-CLI to manage WordPress sites
 		echo "Installing WP-CLI for WordPress management"
 		echo ''

@@ -1,3 +1,19 @@
+#!/bin/bash
+
+#########################################################
+#                                                       #
+#       Package Name: Lamp                              #
+#       Author:Marco Baraldiam                          #
+#       Description: LampPack allows you to             #
+#       automate the installation of LAMP stack         #
+#       and many other utilities on Ubuntu              #
+#                                                       #
+#########################################################
+
+source ./passwd.sh
+directoryName="/var/www/$domainname"
+
+
 #Configure apache
 sudo mkdir $directoryName
 sudo echo "<VirtualHost *:80>

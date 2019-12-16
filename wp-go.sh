@@ -43,5 +43,5 @@ cd $directoryName
 sudo wp core download --allow-root 
 sudo wp config create --dbname=$WP_DB_NAME --dbuser=$WP_DB_USERNAME --dbpass=$WP_DB_PASSWORD --allow-root 
 sudo wp core install --allow-root --url="$domainname" --title="$sitetitle" --admin_user="$siteuser" --admin_password="$sitepassword" --admin_email="$siteemail"   --skip-email
-
+cp ./php.ini /etc/php/7.3/apache2/php.ini
 sudo chown -R www-data:www-data $directoryName 

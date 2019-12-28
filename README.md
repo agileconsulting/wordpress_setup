@@ -1,5 +1,5 @@
 # wordpress_setup
-shell script to setup a wp site
+shell script to setup a wp site. You must start with an ubuntu installation and install all sofware required (Apache mysql ecc). After that you can create n site in your vps node and manage from command line with wp client. This way you can create wordpress site more quickly
 
 Start by updating the package index:
 

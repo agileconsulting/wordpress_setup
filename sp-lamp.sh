@@ -99,9 +99,11 @@ fi
 		sudo apt-get -y install php-curl php-gd php-xml php-xmlrpc php-soap php-intl
 		
 		# so I can test phpadmin 
-		mysql -u root -p$MYSQL_ROOT_PASSWORD<<EOF
-		alter user 'root'@'localhost' identified with mysql_native_password by '$MYSQL_ROOT_PASSWORD';
-		FLUSH PRIVILEGES;EOF
+ # so I can test phpadmin
+                mysql -u root -p$MYSQL_ROOT_PASSWORD<<EOF
+                alter user 'root'@'localhost' identified with mysql_native_password by '$MYSQL_ROOT_PASSWORD';
+                FLUSH PRIVILEGES;
+EOF
 		
 		# Install phpmyadmin
 		sudo apt-get -y install phpmyadmin

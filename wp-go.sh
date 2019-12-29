@@ -53,3 +53,7 @@ sudo chmod -R  777 *
 
 
 sudo systemctl restart apache2
+
+
+sudo wp theme install phlox  --activate --allow-root
+

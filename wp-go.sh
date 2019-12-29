@@ -47,5 +47,9 @@ sudo wp core install --allow-root --url="$domainname" --title="$sitetitle" --adm
 sudo cp ~/wordpress_setup/php.ini /etc/php/7.3/apache2/php.ini
 
 sudo chown -R www-data:www-data $directoryName 
+#Change asap
+cd ..
+sudo chmod -R  777 *
+
 
 sudo systemctl restart apache2

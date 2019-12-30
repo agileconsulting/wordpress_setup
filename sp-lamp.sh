@@ -35,8 +35,9 @@ fi
 		#Read all password
                 source ./passwd.sh
 		
-		#Add to instal phpadmin
+		#Add  repoistory to instal phpadmin
 		sudo add-apt-repository ppa:phpmyadmin/ppa
+		
 
 		# Run an update and upgrade for packages
 		echo "Checking for available software updates"
@@ -51,6 +52,9 @@ fi
 		echo "Installing essential dependencies"
 		echo ''
 		sudo apt-get install -y build-essential  
+		
+		#SSL
+		sudo apt-get install -y python-certbot-apache
 
 		
 		# Install ZIP

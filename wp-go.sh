@@ -57,6 +57,9 @@ sudo wp core download --allow-root
 sudo wp config create --dbname=$WP_DB_NAME --dbuser=$WP_DB_USERNAME --dbpass=$WP_DB_PASSWORD --allow-root 
 sudo wp core install --allow-root --url="$domainname" --title="$sitetitle" --admin_user="$siteuser" --admin_password="$sitepassword" --admin_email="$WP_ADMIN_EMAIL"  --skip-email
 
+sudo wp theme install phlox  --activate --allow-root
+sudo wp plugin install wordpress-seo --activate --allow-root
+sudo wp plugin install cookie-notice --activate --allow-root
 
 sudo chown -R www-data:www-data $directoryName 
 
@@ -72,5 +75,4 @@ sudo systemctl restart apache2
 
 
 
-sudo wp theme install phlox  --activate --allow-root
 

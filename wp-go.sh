@@ -54,6 +54,10 @@ sudo chmod -R  777 *
 
 sudo systemctl restart apache2
 
+To setup https sostituisci con il domain name. Segui https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-18-04
+#sudo certbot --apache -d financial-independence.tk -d www.financial-independence.tk
+
+
 
 sudo wp theme install phlox  --activate --allow-root
 

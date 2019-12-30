@@ -82,18 +82,14 @@ fi
 		echo ''
 
 
-                # sudo apt-get -y install apache2 apache2-utils 
-                # sudo systemctl enable apache2
-                # sudo systemctl start apache2
-
+                
 		#setup  mysql password
                 echo "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections
                 echo "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections		
 		
 		# Install AMP
 		sudo apt-get -y install lamp-server^   
-		#sudo apt-get -y install mysql-server
-
+		
 
 
 		# Install PHP modules
@@ -111,6 +107,10 @@ EOF
 		
 		# Install phpmyadmin
 		sudo apt-get -y install phpmyadmin
+              
+	      sudo cp ~/wordpress_setup/php.ini /etc/php/7.3/apache2/php.ini
+
+ 
  
 		# Enabling modules
 		echo "Enabling Apache modules"

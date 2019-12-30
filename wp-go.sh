@@ -15,19 +15,32 @@ directoryName="/var/www/$domainname"
 
 
 #Configure apache
-sudo mkdir $directoryName
+sudo echo "<VirtualHost www.$domainname:80>
+        ServerName www.$domainname
+        DocumentRoot \"$directoryName/\"
+        <Directory \"$directoryName\">
+                Options FollowSymLinks
+                AllowOverride All
+                Order allow,deny
+                Allow from all
+        </Directory>
+</VirtualHost>" > /etc/apache2/sites-available/www.$domainname.conf
+
+sudo a2ensite www.$domainname
+
 sudo echo "<VirtualHost $domainname:80>
-	ServerName $domainname
-	DocumentRoot \"$directoryName/\"
-	<Directory \"$directoryName\">
-		Options FollowSymLinks
-		AllowOverride All
-		Order allow,deny
-		Allow from all
-	</Directory>
+        ServerName $domainname
+        DocumentRoot \"$directoryName/\"
+        <Directory \"$directoryName\">
+                Options FollowSymLinks
+                AllowOverride All
+                Order allow,deny
+                Allow from all
+        </Directory>
 </VirtualHost>" > /etc/apache2/sites-available/$domainname.conf
 
-sudo a2ensite $domainname 
+sudo a2ensite $domainname
+
 
 # Create database and database user for WordPress
 mysql -u root -p$MYSQL_ROOT_PASSWORD<<EOF
@@ -44,9 +57,9 @@ sudo wp core download --allow-root
 sudo wp config create --dbname=$WP_DB_NAME --dbuser=$WP_DB_USERNAME --dbpass=$WP_DB_PASSWORD --allow-root 
 sudo wp core install --allow-root --url="$domainname" --title="$sitetitle" --admin_user="$siteuser" --admin_password="$sitepassword" --admin_email="$WP_ADMIN_EMAIL"  --skip-email
 
-sudo cp ~/wordpress_setup/php.ini /etc/php/7.3/apache2/php.ini
 
 sudo chown -R www-data:www-data $directoryName 
+
 #Change asap
 cd ..
 sudo chmod -R  777 *
@@ -54,7 +67,7 @@ sudo chmod -R  777 *
 
 sudo systemctl restart apache2
 
-To setup https sostituisci con il domain name. Segui https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-18-04
+#To setup https sostituisci con il domain name. farlo a mano Segui https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-18-04
 #sudo certbot --apache -d financial-independence.tk -d www.financial-independence.tk
 
 

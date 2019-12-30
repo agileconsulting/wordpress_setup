@@ -10,6 +10,11 @@ and then
 ```
 usermod -aG sudo admin
 ```
+ Now change user
+--- 
+su - admin
+---
+
 After that logout from root username and log with admin
 
 Start by updating the package index:

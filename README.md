@@ -68,5 +68,12 @@ Install all
 sudo ./wp-go.sh
 ```
 
+If you want to make change, create a new shell and do this
 
+```
+$ git add .
+$ git commit -m "Add my files"
+$ git push
+
+```
  

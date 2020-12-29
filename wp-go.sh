@@ -12,7 +12,7 @@
 
 source ./passwd.sh
 directoryName="/var/www/$domainname"
-
+mkdir $directoryName
 
 #Configure apache
 sudo echo "<VirtualHost www.$domainname:80>

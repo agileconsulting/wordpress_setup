@@ -71,6 +71,8 @@ sudo ./wp-go.sh
 If you want to make change, create a new shell and do this
 
 ```
+$ git config --global user.name "agileconsulting"
+$ git config --global push.default simple
 $ git add .
 $ git commit -m "Add my files"
 $ git push
